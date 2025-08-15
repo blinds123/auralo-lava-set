@@ -715,24 +715,53 @@
         }
         
         #storyCarousel {
-            margin: 20px 0;
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
         }
         
         #storySlides {
             display: flex;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
         }
         
         #storySlides .story-slide {
             min-width: 100%;
             flex: 0 0 100%;
+            padding: 0;
         }
         
         #storySlides .story-slide img {
             width: 100%;
             height: auto;
             display: block;
+            border-radius: 8px;
+            object-fit: contain;
+            max-height: 600px;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        
+        .carousel-indicators .indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .carousel-indicators .indicator-dot.active {
+            background: #333;
         }
 
         .carousel-nav {
@@ -1295,8 +1324,8 @@
 
         <!-- STORY CAROUSEL SECTION -->
         <section class="story-section">
-            <h2 class="section-title">Why This Hoodie Exists</h2>
-            <p class="section-subtitle">See how this design became a movement</p>
+            <h2 class="section-title">Why This Desert Road Set Exists</h2>
+            <p class="section-subtitle">A new category of outfit that rewrites the rules</p>
             
             <!-- Carousel Navigation -->
             <div style="display: flex; justify-content: flex-start; align-items: center; gap: 4px; padding: 10px; margin: 20px 0;">
@@ -1343,6 +1372,11 @@
                         <img src="./images/story/Screenshot 2025-08-15 at 10.47.10 am.jpg" alt="Story slide 12">
                     </div>
                 </div>
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators" id="storyIndicators" style="text-align: center; margin: 20px 0;">
+                <!-- Indicators will be added by JavaScript -->
             </div>
             
             <div style="text-align: center; margin-top: 32px;">
@@ -3247,6 +3281,24 @@
                 
                 console.log('✅ Initializing ' + carousel.id + ' with ' + slides.length + ' slides');
                 
+                // Create indicators for story carousel
+                if (carousel.id === 'storyCarousel') {
+                    const indicatorsContainer = document.getElementById('storyIndicators');
+                    if (indicatorsContainer) {
+                        indicatorsContainer.innerHTML = '';
+                        for (let i = 0; i < slides.length; i++) {
+                            const dot = document.createElement('span');
+                            dot.className = 'indicator-dot' + (i === 0 ? ' active' : '');
+                            dot.onclick = function() {
+                                const state = window.carouselStates[carousel.id];
+                                state.currentSlide = i;
+                                updateSlide(carousel.id);
+                            };
+                            indicatorsContainer.appendChild(dot);
+                        }
+                    }
+                }
+                
                 function updateSlide(carouselId) {
                     const state = window.carouselStates[carouselId];
                     if (!state) return;
@@ -3256,6 +3308,14 @@
                     
                     state.slidesContainer.style.transform = 'translateX(' + translatePercent + '%)';
                     state.slidesContainer.style.transition = 'transform 0.3s ease';
+                    
+                    // Update indicators
+                    if (carouselId === 'storyCarousel') {
+                        const indicators = document.querySelectorAll('#storyIndicators .indicator-dot');
+                        indicators.forEach(function(dot, index) {
+                            dot.classList.toggle('active', index === state.currentSlide);
+                        });
+                    }
                     
                     console.log('🎠 ' + carouselId + ' moved to slide ' + (state.currentSlide + 1) + '/' + state.slides.length);
                 }

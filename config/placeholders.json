@@ -1,0 +1,223 @@
+{
+  "placeholders": {
+    "{{PRODUCT_NAME}}": "You Are Not For Everyone Hoodie",
+    "{{PRODUCT_TAGLINE}}": "You Are Not For Everyone",
+    "{{PRODUCT_CATEGORY}}": "Premium Comfort Hoodie",
+    "{{PRODUCT_DESCRIPTION}}": "Soothingly Soft, Pre-Shrunk, Wrinkle Free",
+    "{{ORIGINAL_PRICE}}": "200",
+    "{{SALE_PRICE}}": "49",
+    "{{PREORDER_PRICE}}": "19",
+    "{{CURRENCY_SYMBOL}}": "$",
+    "{{CURRENCY_CODE}}": "USD",
+    "{{STOCK_QUANTITY}}": "47",
+    "{{TOTAL_SOLD}}": "250,000",
+    "{{DROP_DATE}}": "August 2025",
+    "{{SHIPPING_DATE}}": "Oct 23",
+    "{{WALLET_ADDRESS}}": "0xE5173e7c3089bD89cd1341b637b8e1951745ED5C",
+    "{{PAYMENT_GATEWAY}}": "simpleswap",
+    "{{FROM_CURRENCY}}": "usd-usd",
+    "{{TO_CURRENCY}}": "pol-matic",
+    "{{PRIMARY_COLOR}}": "#6b7280",
+    "{{SECONDARY_COLOR}}": "#111827",
+    "{{ACCENT_COLOR}}": "#2196F3"
+  },
+  "dynamicContent": {
+    "testimonials": {
+      "tiktok": [
+        {
+          "name": "Emma",
+          "image": "compressed_hoodie_review_Emma_black_30kb.jpg",
+          "review": "okay but why is this literally the softest hoodie i've ever owned??? wore it to coffee with friends and got 3 compliments. the 'you are not for everyone' message hits different when you actually wear it 🖤",
+          "rating": 5,
+          "verified": true
+        },
+        {
+          "name": "Sophia",
+          "image": "compressed_hoodie_review_Sophia_30kb.jpg",
+          "review": "no cap this hoodie changed my whole vibe. perfect oversized fit, the quality is insaneeee, and i love how it makes me feel confident",
+          "rating": 5,
+          "verified": true
+        }
+      ],
+      "trustpilot": [
+        {
+          "name": "Sarah Mitchell",
+          "image": "compressed_trustpilot_review_Sarah_30kb.jpg",
+          "title": "Worth Every Penny - Exceptional Quality",
+          "review": "I was skeptical about ordering online, but this exceeded all expectations. The fabric quality is premium, the fit is perfect, and the message resonates deeply. This isn't just clothing, it's a statement piece.",
+          "rating": 5,
+          "date": "2 days ago",
+          "verified": true
+        }
+      ]
+    },
+    "storySlides": [
+      {
+        "slide": 1,
+        "image": "slide-1_final_crushed_under_20kb.jpg",
+        "caption": "It started with a simple realization...",
+        "type": "hook"
+      },
+      {
+        "slide": 2,
+        "image": "slide-2_final_crushed_under_20kb.jpg",
+        "caption": "We were exhausted trying to please everyone",
+        "type": "problem"
+      }
+    ],
+    "urgencyMessages": [
+      "🔥 {{STOCK_QUANTITY}} pieces left!",
+      "⚠️ Size {{SIZE}} just sold out!",
+      "⏰ Sale ends in {{TIME}}",
+      "🛒 {{NAME}} from {{LOCATION}} just ordered",
+      "📦 Only {{QUANTITY}} left in {{SIZE}}"
+    ],
+    "socialProof": {
+      "recentPurchases": [
+        {"name": "Sarah", "location": "New York", "time": "2 minutes ago"},
+        {"name": "Michael", "location": "Los Angeles", "time": "5 minutes ago"},
+        {"name": "Emma", "location": "Chicago", "time": "8 minutes ago"}
+      ]
+    }
+  },
+  "adaptationMarkers": {
+    "html": [
+      {
+        "line": 1048,
+        "marker": "<!-- ADAPTABLE: Drop Date and Urgency Message -->",
+        "content": "Product drop header and scarcity message"
+      },
+      {
+        "line": 1056,
+        "marker": "<!-- ADAPTABLE: Product Name and Tagline -->",
+        "content": "Main product headline"
+      },
+      {
+        "line": 1058,
+        "marker": "<!-- ADAPTABLE: Product Description and Social Proof -->",
+        "content": "Product features and sales numbers"
+      },
+      {
+        "line": 1060,
+        "marker": "<!-- ADAPTABLE: Main Product Image -->",
+        "content": "Hero product image"
+      },
+      {
+        "line": 1067,
+        "marker": "<!-- ADAPTABLE: Stock Quantity -->",
+        "content": "Available inventory number"
+      },
+      {
+        "line": 1084,
+        "marker": "<!-- ADAPTABLE: Price Points -->",
+        "content": "Original and sale prices"
+      }
+    ],
+    "javascript": [
+      {
+        "line": 2835,
+        "variable": "WALLET_ADDRESS",
+        "description": "Crypto wallet for payments"
+      },
+      {
+        "line": 2840,
+        "variable": "selectedPrice",
+        "description": "Dynamic price based on selection"
+      },
+      {
+        "line": 2845,
+        "variable": "paymentGatewayUrl",
+        "description": "Payment processor URL"
+      }
+    ],
+    "css": [
+      {
+        "line": 130,
+        "variable": "--primary-color",
+        "description": "Main brand color"
+      },
+      {
+        "line": 131,
+        "variable": "--secondary-color",
+        "description": "Secondary brand color"
+      },
+      {
+        "line": 132,
+        "variable": "--accent-color",
+        "description": "Call-to-action color"
+      }
+    ]
+  },
+  "assetMapping": {
+    "images": {
+      "product": [
+        {
+          "current": "main-hoodie.jpg",
+          "placeholder": "{{MAIN_PRODUCT_IMAGE}}",
+          "description": "Primary product hero image",
+          "dimensions": "1920x1080",
+          "format": "jpg",
+          "maxSize": "200kb"
+        }
+      ],
+      "testimonials": {
+        "tiktok": [
+          {
+            "pattern": "compressed_hoodie_review_*.jpg",
+            "count": 10,
+            "description": "TikTok style review screenshots",
+            "dimensions": "1080x1920",
+            "format": "jpg",
+            "maxSize": "30kb"
+          }
+        ],
+        "trustpilot": [
+          {
+            "pattern": "compressed_trustpilot_review_*.jpg",
+            "count": 6,
+            "description": "Trustpilot review screenshots",
+            "dimensions": "1200x800",
+            "format": "jpg",
+            "maxSize": "30kb"
+          }
+        ]
+      },
+      "story": [
+        {
+          "pattern": "slide-*_final_crushed_under_20kb.jpg",
+          "count": 7,
+          "description": "Story carousel slides",
+          "dimensions": "1080x1080",
+          "format": "jpg",
+          "maxSize": "20kb"
+        }
+      ]
+    }
+  },
+  "contentFormulas": {
+    "headlines": [
+      "{{PRODUCT_TAGLINE}}",
+      "The {{ORIGINAL_PRICE}} {{PRODUCT_CATEGORY}} Everyone Wants For {{SALE_PRICE}}",
+      "Only {{STOCK_QUANTITY}} Left From The {{DROP_DATE}} Drop",
+      "Join {{TOTAL_SOLD}}+ Who Already Own This"
+    ],
+    "urgency": [
+      "🔥 Only {{STOCK_QUANTITY}} pieces left!",
+      "⚠️ {{DROP_DATE}} Drop - Almost Gone",
+      "⏰ Sale Ends In {{COUNTDOWN}}",
+      "📦 Ships Within 24 Hours"
+    ],
+    "cta": [
+      "ADD TO CART - <del>{{CURRENCY_SYMBOL}}{{ORIGINAL_PRICE}}</del> {{CURRENCY_SYMBOL}}{{SALE_PRICE}}",
+      "GET YOURS - SAVE {{CURRENCY_SYMBOL}}{{SAVINGS}}",
+      "CLAIM 1 OF {{STOCK_QUANTITY}} REMAINING",
+      "YES! SEND ME MY {{PRODUCT_NAME}}"
+    ],
+    "socialProof": [
+      "{{TOTAL_SOLD}}+ Happy Customers",
+      "Trending on TikTok",
+      "4.8★ from {{REVIEW_COUNT}} Reviews",
+      "As Seen On {{PLATFORM}}"
+    ]
+  }
+}

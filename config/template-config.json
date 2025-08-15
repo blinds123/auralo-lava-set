@@ -1,0 +1,192 @@
+{
+  "product": {
+    "name": "You Are Not For Everyone Hoodie",
+    "tagline": "You Are Not For Everyone",
+    "category": "Premium Comfort Hoodie",
+    "description": "Premium Comfort Hoodie - Soothingly Soft, Pre-Shrunk, Wrinkle Free",
+    "materials": "100% Premium Cotton Blend",
+    "features": [
+      "Soothingly soft fabric",
+      "Pre-shrunk for perfect fit",
+      "Wrinkle-free technology",
+      "Reinforced stitching",
+      "Hidden message inside"
+    ],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "originalPrice": 200,
+    "inStockPrice": 99,
+    "preorderPrice": 19,
+    "currency": "USD",
+    "currencySymbol": "$"
+  },
+  "inventory": {
+    "totalQuantity": 47,
+    "soldQuantity": 250000,
+    "dropDate": "August 2025",
+    "dropType": "Limited Edition Drop",
+    "scarcityMessage": "Only 47 pieces found in warehouse",
+    "xlSoldOut": true,
+    "xlSoldOutTime": 15000,
+    "twoTierPricing": true,
+    "inStockPercentage": 35,
+    "preOrderPercentage": 65
+  },
+  "shipping": {
+    "readyToShipItems": true,
+    "readyToShipTime": "In-Stock: Ready to Ship",
+    "preorderAvailable": true,
+    "preorderShipDate": "Wait & Save: Estimated Ship Oct 23",
+    "freeShippingThreshold": 50,
+    "shippingCost": 0,
+    "internationalAvailable": true
+  },
+  "payment": {
+    "primaryGateway": "simpleswap",
+    "gatewayUrl": "https://simpleswap.io/exchange",
+    "walletAddress": "0xE5173e7c3089bD89cd1341b637b8e1951745ED5C",
+    "fromCurrency": "usd-usd",
+    "toCurrency": "pol-matic",
+    "acceptedMethods": ["crypto", "card"],
+    "autoRedirect": false,
+    "popupCheckout": true
+  },
+  "branding": {
+    "primaryColor": "#6b7280",
+    "secondaryColor": "#111827",
+    "accentColor": "#2196F3",
+    "backgroundColor": "#ffffff",
+    "textColor": "#333333",
+    "fontHeadline": "Space Mono",
+    "fontBody": "Source Code Pro"
+  },
+  "popups": {
+    "xlSelloutPopup": {
+      "enabled": true,
+      "triggerTime": 15000,
+      "message": "🔥 XL Size Just Sold Out!",
+      "subMessage": "Sarah from New York just bought the last XL"
+    },
+    "checkoutPopup": {
+      "enabled": true,
+      "title": "Complete Your Order",
+      "step1Title": "Step 1: Copy Wallet Address",
+      "step1Text": "Click below to copy our wallet address",
+      "step2Title": "Step 2: Send Payment",
+      "step2Text": "Complete your exchange with Mercuryo",
+      "buttonText": "Complete Your Exchange with Mercuryo"
+    },
+    "exitIntent": {
+      "enabled": true,
+      "message": "Wait! Don't miss out on this limited drop",
+      "discount": "Extra 10% off if you order now"
+    }
+  },
+  "socialProof": {
+    "totalSold": 250000,
+    "recentPurchases": [
+      {"name": "Sarah", "location": "New York", "time": "2 minutes ago"},
+      {"name": "Michael", "location": "Los Angeles", "time": "5 minutes ago"},
+      {"name": "Emma", "location": "Chicago", "time": "8 minutes ago"}
+    ],
+    "trustpilotRating": 4.8,
+    "trustpilotReviews": 2847,
+    "tiktokViews": "3.2M",
+    "instagramFollowers": "127K"
+  },
+  "urgency": {
+    "stockWarning": {
+      "enabled": true,
+      "threshold": 50,
+      "message": "⚠️ Only {quantity} left in stock!"
+    },
+    "timerCountdown": {
+      "enabled": true,
+      "duration": 1800000,
+      "message": "Sale ends in:"
+    },
+    "recentActivity": {
+      "enabled": true,
+      "updateInterval": 30000
+    }
+  },
+  "seo": {
+    "title": "You Are Not For Everyone - Limited Edition Hoodie",
+    "description": "Get the viral 'You Are Not For Everyone' hoodie. Premium comfort, limited edition from August 2025 drop. Only 47 left.",
+    "keywords": ["limited edition hoodie", "you are not for everyone", "premium comfort hoodie", "august 2025 drop"],
+    "ogImage": "/images/product/main-hoodie.jpg",
+    "ogType": "product",
+    "twitterCard": "summary_large_image"
+  },
+  "analytics": {
+    "gtmId": "",
+    "gaId": "",
+    "fbPixel": "",
+    "tiktokPixel": "",
+    "trackingEvents": [
+      "page_view",
+      "add_to_cart",
+      "begin_checkout",
+      "purchase",
+      "scroll_depth",
+      "time_on_page"
+    ]
+  },
+  "testimonialFormulas": {
+    "tiktokStyle": {
+      "tone": "casual, authentic, enthusiastic",
+      "length": "50-100 words",
+      "elements": ["specific detail", "emotional reaction", "recommendation"],
+      "emoji": true,
+      "lowercase": true
+    },
+    "trustpilotStyle": {
+      "tone": "professional, detailed, considered",
+      "length": "100-200 words",
+      "elements": ["title", "context", "specific benefits", "comparison", "recommendation"],
+      "emoji": false,
+      "properCase": true
+    }
+  },
+  "storyFramework": {
+    "act1": {
+      "hook": "Attention-grabbing statement about identity",
+      "problem": "Feeling like you need to please everyone",
+      "agitation": "The exhaustion of constant people-pleasing"
+    },
+    "act2": {
+      "discovery": "Realization that authenticity matters more",
+      "journey": "Creating something for the bold and authentic",
+      "obstacles": "Doubts from others, production challenges"
+    },
+    "act3": {
+      "solution": "This hoodie as a statement of self",
+      "transformation": "Confidence in being yourself",
+      "callToAction": "Join the movement of authenticity"
+    }
+  },
+  "adaptationPriority": {
+    "mustChange": [
+      "product.name",
+      "product.tagline",
+      "product.prices",
+      "inventory.dropDate",
+      "payment.walletAddress",
+      "seo.title",
+      "seo.description"
+    ],
+    "shouldChange": [
+      "product.features",
+      "shipping.dates",
+      "socialProof.numbers",
+      "testimonials",
+      "storyContent"
+    ],
+    "canKeep": [
+      "framework",
+      "popupLogic",
+      "conversionElements",
+      "mobileOptimizations",
+      "psychologicalTriggers"
+    ]
+  }
+}

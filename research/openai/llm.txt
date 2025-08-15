@@ -1,0 +1,276 @@
+# OpenAI API Documentation Summary - LLM.txt
+
+## Core Models and Capabilities
+
+### Latest GPT-5 Series (Most Advanced)
+- **GPT-5**: Best model for coding and agentic tasks across domains
+- **GPT-5 mini**: Faster, cost-efficient version for well-defined tasks  
+- **GPT-5 nano**: Fastest, most cost-efficient version
+- **GPT-5 Chat**: GPT-5 model used in ChatGPT
+
+### Deep Research Models (o3/o4 Series)
+- **o3-deep-research**: Most powerful deep research model
+- **o4-mini-deep-research**: Faster, more affordable deep research model
+- **o3-pro**: Version of o3 with more compute for better responses
+- **o3**: Most powerful reasoning model
+- **o4-mini**: Faster, more affordable reasoning model
+
+### GPT-4.1 Series
+- **GPT-4.1**: Fast, highly intelligent model with largest context window
+- **GPT-4.1-mini**: Balanced for intelligence, speed, and cost
+- **GPT-4.1-nano**: Fastest, most cost-effective GPT-4.1 model
+
+### Reasoning Models Key Features
+- Trained with reinforcement learning to perform reasoning
+- "Think before they answer" - produce internal chain of thought
+- Excel in: complex problem solving, coding, scientific reasoning, multi-step planning
+- Use `reasoning.effort` parameter: "low", "medium", "high"
+- Generate reasoning tokens (billed as output tokens but not visible via API)
+- Recommend reserving at least 25,000 tokens for reasoning and outputs
+
+## Image Generation and Vision
+
+### Image Generation Models
+- **GPT Image 1**: State-of-the-art natively multimodal image generation model
+- **DALL·E 3**: Previous generation image generation model  
+- **DALL·E 2**: First image generation model
+
+### Vision Capabilities
+- Models can understand and analyze images as input
+- Supports multiple image input methods: URL, Base64, File ID
+- Image requirements: PNG, JPEG, WEBP, non-animated GIF
+- Size limits: Up to 50 MB per request, 500 images per request
+- Detail levels: "low" (85 tokens), "high" (better understanding), "auto" (default)
+
+### Image Cost Calculation
+Different calculation methods based on model:
+- **GPT-4.1-mini/nano, o4-mini**: Based on 32px x 32px patches
+- **GPT 4o/4.1 series**: Based on 512px squares 
+- **GPT Image 1**: Uses 512px shortest side, adds fidelity tokens
+
+## Audio and Speech
+
+### Audio Models
+- **GPT-4o Audio**: Capable of audio inputs and outputs
+- **GPT-4o Realtime**: Realtime text and audio inputs/outputs
+- **TTS-1**: Text-to-speech optimized for speed
+- **TTS-1 HD**: Text-to-speech optimized for quality
+- **Whisper-1**: General-purpose speech recognition
+- **gpt-4o-mini-tts**: Can speak with specified tone/style
+
+### Audio API Options
+| API | Supported modalities | Streaming support |
+|-----|---------------------|------------------|
+| Realtime API | Audio/text inputs/outputs | Audio streaming in/out |
+| Chat Completions API | Audio/text inputs/outputs | Audio streaming out |
+| Transcription API | Audio inputs | Audio streaming out |
+| Speech API | Text inputs/audio outputs | Audio streaming out |
+
+## Embeddings
+
+### Embedding Models
+| Model | ~ Pages per dollar | Performance on MTEB | Max input |
+|-------|-------------------|-------------------|-----------|
+| text-embedding-3-small | 62,500 | 62.3% | 8192 |
+| text-embedding-3-large | 9,615 | 64.6% | 8192 |
+| text-embedding-ada-002 | 12,500 | 61.0% | 8192 |
+
+### Embedding Use Cases
+- Search (ranked by relevance)
+- Clustering (grouped by similarity)
+- Recommendations
+- Anomaly detection
+- Classification
+- Machine learning features
+
+### Key Features
+- Vector dimensions: 1536 (small), 3072 (large)
+- Can reduce dimensions using `dimensions` parameter
+- Recommend cosine similarity for distance function
+- Knowledge cutoff: September 2021
+
+## API Authentication and Rate Limits
+
+### Rate Limit Structure
+Measured in five ways:
+- **RPM** (requests per minute)
+- **RPD** (requests per day) 
+- **TPM** (tokens per minute)
+- **TPD** (tokens per day)
+- **IPM** (images per minute)
+
+### Usage Tiers
+| Tier | Qualification | Usage limits |
+|------|--------------|-------------|
+| Free | Allowed geography | $100/month |
+| Tier 1 | $5 paid | $100/month |
+| Tier 2 | $50 paid + 7 days | $500/month |
+| Tier 3 | $100 paid + 7 days | $1,000/month |
+| Tier 4 | $250 paid + 14 days | $5,000/month |
+| Tier 5 | $1,000 paid + 30 days | $200,000/month |
+
+### Error Mitigation
+- Use exponential backoff for rate limit errors
+- Libraries: Tenacity, backoff, or manual implementation
+- Set `max_tokens` close to expected response size
+- Use Batch API for non-immediate responses
+
+## Batch API
+
+### Key Benefits
+- **50% lower costs** compared to synchronous APIs
+- **Higher rate limits**: Separate pool from synchronous APIs
+- **24-hour completion time**: Clear turnaround guarantee
+
+### Process
+1. Prepare .jsonl batch file (up to 50,000 requests, 200 MB max)
+2. Upload file via Files API
+3. Create batch job
+4. Monitor status (validating → in_progress → completed)
+5. Download results via output_file_id
+
+### Supported Endpoints
+- `/v1/responses` (Responses API)
+- `/v1/chat/completions` (Chat Completions API)
+- `/v1/embeddings` (Embeddings API)
+- `/v1/completions` (Completions API)
+
+## Fine-tuning Methods
+
+| Method | How it works | Best for | Use with |
+|--------|-------------|----------|----------|
+| Supervised fine-tuning (SFT) | Examples of correct responses | Classification, translation, content formatting | gpt-4.1 series |
+| Vision fine-tuning | Image inputs for supervised fine-tuning | Image classification, complex prompts | gpt-4o-2024-08-06 |
+| Direct preference optimization (DPO) | Correct/incorrect response pairs | Summarization, chat tone/style | gpt-4.1 series |
+| Reinforcement fine-tuning (RFT) | Expert graded responses | Complex domain tasks requiring reasoning | o4-mini-2025-04-16 |
+
+## Function Calling
+
+### Function Definition Structure
+```json
+{
+    "type": "function",
+    "name": "function_name",
+    "description": "When and how to use this function",
+    "parameters": {
+        "type": "object",
+        "properties": { /* JSON schema */ },
+        "required": ["param1"],
+        "additionalProperties": false
+    },
+    "strict": true
+}
+```
+
+### Tool Choice Options
+- **Auto**: Call zero, one, or multiple functions (default)
+- **Required**: Call one or more functions
+- **Forced Function**: Call exactly one specific function
+- **Allowed tools**: Restrict to subset of available tools
+
+### Custom Tools
+- Support arbitrary string inputs instead of JSON schema
+- Can use context-free grammars (CFG) for constraints
+- Supported CFG syntaxes: Lark and Regex
+- Useful for avoiding unnecessary JSON wrapping
+
+## Production Best Practices
+
+### Cost Management
+- Monitor costs with notification thresholds and monthly budgets
+- Cost = (number of tokens) × (cost per token)
+- Use smaller models for some tasks
+- Implement caching for common queries
+- Use tokenizer tool to estimate costs
+
+### Performance Optimization
+1. **Model Selection**: Choose appropriate model for task complexity
+2. **Token Management**: Lower max_tokens, include stop sequences
+3. **Streaming**: Set `stream: true` for progressive responses
+4. **Infrastructure**: Consider US-based servers for lower latency
+5. **Batching**: Combine multiple prompts when possible
+
+### Security and Safety
+- Use free Moderation API to filter unsafe content
+- Implement "red-teaming" for adversarial testing
+- Human-in-the-loop for high-stakes domains
+- Constrain user input and limit output tokens
+- Use safety identifiers in API requests
+- Implement KYC (Know Your Customer) measures
+
+### Organization Management
+- Separate staging and production environments
+- Use projects to isolate development work
+- Implement proper API key management
+- Set custom rate and spend limits per project
+- Monitor API usage with tracking enabled
+
+## Moderation
+
+### Available Models
+- **omni-moderation-latest**: Supports text and images, more categories
+- **text-moderation-latest** (Legacy): Text only, fewer categories
+
+### Content Categories
+| Category | Description | Input Types |
+|----------|-------------|-------------|
+| sexual | Content meant to arouse sexual excitement | Text and images |
+| sexual/minors | Sexual content including minors | Text only |
+| harassment | Harassing language towards targets | Text only |
+| hate | Hate based on protected characteristics | Text only |
+| violence | Content depicting death, violence, injury | Text and images |
+| self-harm | Content promoting acts of self-harm | Text and images |
+| illicit | Advice on committing illicit acts | Text only (omni) |
+
+### Response Structure
+- `flagged`: Boolean indicating if content is potentially harmful
+- `categories`: Per-category violation flags
+- `category_scores`: Confidence scores (0-1)
+- `category_applied_input_types`: Which input types were flagged
+
+## Key Integration Patterns
+
+### Text Generation
+```javascript
+const response = await client.responses.create({
+    model: "gpt-5",
+    input: "Your prompt here",
+    reasoning: { effort: "medium" }, // For reasoning models
+    instructions: "System-level instructions"
+});
+```
+
+### Image Analysis
+```javascript
+const response = await client.responses.create({
+    model: "gpt-4.1-mini",
+    input: [{
+        role: "user",
+        content: [
+            {"type": "input_text", "text": "What's in this image?"},
+            {"type": "input_image", "image_url": "https://example.com/image.jpg"}
+        ]
+    }]
+});
+```
+
+### Embeddings
+```javascript
+const embedding = await client.embeddings.create({
+    model: "text-embedding-3-small",
+    input: "Text to embed",
+    dimensions: 1024 // Optional dimension reduction
+});
+```
+
+### Function Calling
+```javascript
+const response = await client.responses.create({
+    model: "gpt-5",
+    tools: [/* function definitions */],
+    input: [{"role": "user", "content": "Your prompt"}],
+    tool_choice: "auto"
+});
+```
+
+This comprehensive documentation provides the foundation for building production-ready applications with the OpenAI API, covering all major capabilities, best practices, and integration patterns.

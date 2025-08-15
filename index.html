@@ -708,9 +708,31 @@
         .story-carousel, .review-carousel {
             position: relative;
             border-radius: 8px;
-            overflow: visible;
+            overflow: hidden;
             width: 100%;
             max-width: 100%;
+            height: auto;
+        }
+        
+        #storyCarousel {
+            margin: 20px 0;
+        }
+        
+        #storySlides {
+            display: flex;
+            transition: transform 0.4s ease;
+            width: 100%;
+        }
+        
+        #storySlides .story-slide {
+            min-width: 100%;
+            flex: 0 0 100%;
+        }
+        
+        #storySlides .story-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .carousel-nav {
